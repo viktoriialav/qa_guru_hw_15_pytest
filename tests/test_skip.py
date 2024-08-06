@@ -8,7 +8,7 @@ from selene import browser, be
 
 def test_github_desktop(browser_management):
     if browser_management == 'mobile':
-        pytest.skip(reason='These sizes for mobile version')
+        pytest.skip(reason='These sizes are for mobile version')
 
     browser.open('/')
     browser.element('.HeaderMenu-link--sign-up').click()
@@ -19,7 +19,7 @@ def test_github_desktop(browser_management):
 
 def test_github_mobile(browser_management):
     if browser_management == 'desktop':
-        pytest.skip(reason='These sizes for desktop version')
+        pytest.skip(reason='These sizes are for desktop version')
 
     browser.open('/')
     browser.element('.Button--link').click()

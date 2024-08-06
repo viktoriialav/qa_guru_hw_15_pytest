@@ -49,7 +49,7 @@ def browser_management(request):
     driver_options.page_load_strategy = 'eager'
     browser.config.driver_options = driver_options
 
-    if width > 600:
+    if width > 500:
         yield 'desktop'
     else:
         yield 'mobile'
