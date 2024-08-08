@@ -4,14 +4,18 @@
 import pytest
 from selene import browser, be
 
-only_desktop_version = pytest.mark.parametrize("browser_management_desktop_version", [(1920, 1080), (2560, 1440)],
-                                               indirect=True, ids=['FHD', 'QHD'])
-only_mobile_version = pytest.mark.parametrize("browser_management_mobile_version", [(375, 667), (430, 932)],
-                                              indirect=True, ids=['iPhone_SE', 'iPhone_14_Pro_Max'])
+only_desktop_version = pytest.mark.parametrize("browser_management",
+                                               [(1920, 1080), (2560, 1440)],
+                                               indirect=True,
+                                               ids=['FHD', 'QHD'])
+only_mobile_version = pytest.mark.parametrize("browser_management",
+                                              [(375, 667), (430, 932)],
+                                              indirect=True,
+                                              ids=['iPhone_SE', 'iPhone_14_Pro_Max'])
 
 
 @only_desktop_version
-def test_github_desktop(browser_management_desktop_version):
+def test_github_desktop(browser_management):
     browser.open('/')
     browser.element('.HeaderMenu-link--sign-up').click()
 
@@ -20,7 +24,7 @@ def test_github_desktop(browser_management_desktop_version):
 
 
 @only_mobile_version
-def test_github_mobile(browser_management_mobile_version):
+def test_github_mobile(browser_management):
     browser.open('/')
     browser.element('.Button--link').click()
     browser.element('.HeaderMenu-link--sign-up').click()
